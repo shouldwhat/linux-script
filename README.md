@@ -1,4 +1,4 @@
-# linux-shell
+# linux-script
 
 *. grammer : linux 쉘(sh) 프로그래밍 문법에 대한 테스트.
 
