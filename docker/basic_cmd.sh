@@ -23,4 +23,5 @@ docker login
 
 # tag : 현재 이미지 tagging
 docker tag $IMAGE_NAME $REPO_NAME:$TAG_NAME
+docker push $REPO_NAME:$TAG_NAME
 
