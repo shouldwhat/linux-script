@@ -1,0 +1,46 @@
+version: "3"
+services:
+  web:
+    # replace username/repo:tag with your name and image details
+    image: shouldwhat/get-started:part2
+    deploy:
+      replicas: 3
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 50M
+      restart_policy:
+        # on-failure : 컨테이너 실패 시 즉시 다시 시작
+        condition: on-failure
+    ports:
+      - "80:80"
+    networks:
+      - webnet
+  visualizer:
+    # 해당 stack으로 배포한 app을 가시화할 수 있는 웹 서비스 포탈 배포
+    image: dockersamples/visualizer:stable
+    ports:
+      - "8080:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - webnet
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      # "컨테이너내부파일:호스트 파일"
+      - "/data:/data"
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+    command: redis-server --appendonly yes
+    networks:
+      - webnet
+networks:
+  # webnet : 기본설정 (오버레이 네트워크 구성 & 라운드로빈 로드밸런싱)
+  webnet:

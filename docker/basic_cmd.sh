@@ -29,6 +29,8 @@ docker tag $IMAGE_NAME $REPO_NAME:$TAG_NAME
 docker push $REPO_NAME:$TAG_NAME
 
 # docker stack 배포
+# stack : A stack is a group of interrelated services that share dependencies. and can be orchestrated and scaled together.
+# this command means 'single service stack' running on a 'single host'.
 docker stack deploy -c $COMPOSE_FILE_NAME $STACK_NAME
 
 # 배포된 docker stack 목록
@@ -42,6 +44,10 @@ docker container ls
 # 배포된 docker stack 삭제
 docker stack rm $STACK_NAME
 
-# docker swarm 로그인&로그아웃
+# docker swarm 모드 활성화 & 현재 노드를 매니져로 지정
 docker swarm init
+
+# then, 다른 머신을 swarm의 worker 노드로 추가
+docker swarm join
+
 docker swarm leave --force
