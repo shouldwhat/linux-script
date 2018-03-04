@@ -1,23 +1,11 @@
 # linux-script
 
-*. grammer : linux 쉘(sh) 프로그래밍 문법에 대한 테스트.
+#### 개인 리눅스 스크립트 정리
 
-    1. calcuration.sh : 간단한 사칙연산자 사용하기.
+	1. docker : Docker 관련 스크립트 정리.
 
-    2. env.sh : 기본 내장 환경변수 사용하기.
+	2. grammer : linux 쉘(sh) 프로그래밍 문법 정리&테스트.
 
-    3. for.sh : 반복문 사용하기.
+	3. openstack : OpenStack 플랫폼 관련 스크립트 정리.
 
-    4. if.sh : 조건문 사용하기.
-
-    5. input.sh : 사용자 입력 명령 사용하기.
-
-    6. replace_str.sh : 문서 내에서 해당 문자열 찾아바꾸기.
-
-    7. http-call.sh : curl 명령을 사용하여 http restful api 호출하기.
-
-*. openstack
-
-*. docker
-
-	1. install_docker.sh : docker 설치하기. (CentOS 7.)
+	4. vim : 개인 vim 환경 설정
