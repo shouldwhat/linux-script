@@ -2,8 +2,10 @@
 
 IMAGE_NAME=friendlyhello
 CONTAINER_ID=37390bad58b9
+CONTAINER_NAME=alpine4
 REPO_NAME=get-started
 TAG_NAME=part2
+CMD=pwd
 
 COMPOSE_FILE_NAME=docker-compose.yml
 STACK_NAME=getstartedlab
@@ -13,9 +15,26 @@ docker run -p 4000:80 $IMAGE_NAME
 
 # -d : 백그라운드 모드 실행
 docker run -d -p 4000:80 $IMAGE_NAME
+docker run -dit --name $CONTAINER_NAME $IMAGE_NAME $CMD
+
+# -i : interactive, -t : 콘솔에서 input, output 확인가능
+# --name '컨테이너이름' '사용할 BASE 이미지' '실행할 COMMAND'
+# (default:--network brdige 생략됨)
+docker run -dit --name alpine1 alpine ash
+
+# CTRL p + CTRL q
+
+# attach : 실행 중인 container 콘솔에 접속
+docker container attach $CONTAINER_NAME
 
 # stop : 실행 중인 컨테이너 중지
 docker stop $CONTAINER_ID
+docker container stop $IMAGE_NAME
+docker container stop alpine1 alpine2
+docker container ls
+
+# container rm : 컨테이너 삭제
+docker container rm alpine1 alpine2
 
 # -t : 빌드 후 생성할 이미지 파일명
 # . : 참조할 디렉토리 위치
@@ -51,3 +70,4 @@ docker swarm init
 docker swarm join
 
 docker swarm leave --force
+
