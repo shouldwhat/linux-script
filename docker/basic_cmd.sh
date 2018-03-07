@@ -27,6 +27,11 @@ docker run -dit --name alpine1 alpine ash
 # attach : 실행 중인 container 콘솔에 접속
 docker container attach $CONTAINER_NAME
 
+# exec : 컨테이너 내에서 /bin/bash 를 실행하고, 호스트와 상호작용
+# -i : interactive
+# -t : tty
+docker exec -it $CONTAINER_NAME /bin/bash
+
 # stop : 실행 중인 컨테이너 중지
 docker stop $CONTAINER_ID
 docker container stop $IMAGE_NAME

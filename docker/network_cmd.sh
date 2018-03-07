@@ -6,6 +6,7 @@
 # 디폴트로 brdige이며 '--driver brdige' 생략 가능
 # brdige 네트워크 방식을 사용하는 'alpine-net 네트워크 생성'
 docker network create --driver bridge alpine-net
+docker network create -d overlay alpine-net
 docker network rm alpine-net
 
 # docker network 목록 조회

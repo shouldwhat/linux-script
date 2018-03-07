@@ -42,5 +42,5 @@ services:
     networks:
       - webnet
 networks:
-  # webnet : 기본설정 (오버레이 네트워크 구성 & 라운드로빈 로드밸런싱)
+  # webnet : 기본설정 (overlay 네트워크 구성 & 라운드로빈 로드밸런싱)
   webnet:
