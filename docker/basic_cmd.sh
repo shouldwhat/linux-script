@@ -10,12 +10,15 @@ CMD=pwd
 COMPOSE_FILE_NAME=docker-compose.yml
 STACK_NAME=getstartedlab
 
-# -p : Dockerfile 내에 EXPOST한 80포트를 4000포트로 리매핑하여 실행
+# -p : 도커 호스트의 4000 포트를 컨테이너의 80 포트로 포워딩 설정
 docker run -p 4000:80 $IMAGE_NAME
 
 # -d : 백그라운드 모드 실행
 docker run -d -p 4000:80 $IMAGE_NAME
 docker run -dit --name $CONTAINER_NAME $IMAGE_NAME $CMD
+
+# exec : container 내부에서 커멘드($CMD) 실행
+docker exec $IMAGE_NAME $CMD
 
 # -i : interactive, -t : 콘솔에서 input, output 확인가능
 # --name '컨테이너이름' '사용할 BASE 이미지' '실행할 COMMAND'
