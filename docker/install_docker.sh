@@ -11,4 +11,7 @@ yum-config-manager --add-repo $REPO_URL
 sleep 1
 
 # install
-yum install docker-ce
+yum install docker-ce -y
+
+# start service
+systemctl start docker
