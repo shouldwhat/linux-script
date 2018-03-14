@@ -1,4 +1,7 @@
 #!/bin/sh
+#
+# https://docs.docker.com/engine/reference/builder/#usage
+#
 
 # FROM 
 1. Dockerfile의 첫번재 명령. 
@@ -18,6 +21,7 @@ ex) ADD . /app
 ex) ENV NAME world
 
 # RUN
+0. RUN 키워드는 선언한 수만큼의 이미지 레이어가 만들어진다.
 1. 커멘드라인 명령어 실행
 2. RUN '실행할 명령어'
 ex) RUN yum update
