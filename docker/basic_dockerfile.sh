@@ -1,9 +1,11 @@
 #!/bin/sh
 
 # FROM 
-1. Dockerfile의 첫번재 명령.
+1. Dockerfile의 첫번재 명령. 
 2. Base 이미지 지정.
+3. FROM REPO:TAG
 ex) FROM ubuntu
+ex) FROM java:8u111-jdk
 
 # ADD
 1. 호스트의 파일을 컨테이너 내 디렉토리로 이동. (like as 'mv')

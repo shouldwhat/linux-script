@@ -45,7 +45,7 @@ docker container ls
 docker container rm alpine1 alpine2
 
 # -t : 빌드 후 생성할 이미지 파일명
-# . : 참조할 디렉토리 위치
+# . : 참조할 디렉토리 위치 -> Dockerfile 필요
 docker build -t friendlyhello .
 
 # login : docker hub 로그인
