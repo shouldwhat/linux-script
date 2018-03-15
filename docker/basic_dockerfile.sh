@@ -10,6 +10,9 @@
 ex) FROM ubuntu
 ex) FROM java:8u111-jdk
 
+# LABEL
+1. 메타 정보를 입력.
+
 # ADD
 1. 호스트의 파일을 컨테이너 내 디렉토리로 이동. (like as 'mv')
 2. $ ADD '호스트 내 대상 파일' '컨테이너 내 디렉토리 경로'
@@ -26,12 +29,16 @@ ex) ENV NAME world
 2. RUN '실행할 명령어'
 ex) RUN yum update
 
+# ENTRYPOINT
+1. RUN 실행 이후 가장 마지막에 실행 되는 명령어
+
+
 # CMD
 1. 컨테이너가 실행될 때 실행할 명령어
 2. CMD ["명령어 ..."]
 ex) CMD ["python", "app.py"]
 
-# EXPOST
+# EXPOSE
 1. 컨테이너로 포워딩할 호스트의 네트워크 포트
 2. EXPOSE '호스트 포트'
 ex) EXPOSE 8080

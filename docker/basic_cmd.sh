@@ -10,6 +10,9 @@ CMD=pwd
 COMPOSE_FILE_NAME=docker-compose.yml
 STACK_NAME=getstartedlab
 
+# image rm
+docker rmi $CONTAINER_ID
+
 # -p : 도커 호스트의 4000 포트를 컨테이너의 80 포트로 포워딩 설정
 docker run -p 4000:80 $IMAGE_NAME
 
@@ -25,10 +28,17 @@ docker exec $IMAGE_NAME $CMD
 # (default:--network brdige 생략됨)
 docker run -dit --name alpine1 alpine ash
 
-# CTRL p + CTRL q
+# CTRL p + CTRL q : background 상태로 exit
+# CTRL D : container 종료
 
 # attach : 실행 중인 container 콘솔에 접속
 docker container attach $CONTAINER_NAME
+
+# 현재 컨테이너의 bash log
+docker logs $CONTAINER_ID
+
+# 현재 이미지 상태를 스냅샷 복제
+docker commit $CONTAINER_ID new_image_name
 
 # exec : 컨테이너 내에서 /bin/bash 를 실행하고, 호스트와 상호작용
 # -i : interactive
@@ -43,6 +53,19 @@ docker container ls
 
 # container rm : 컨테이너 삭제
 docker container rm alpine1 alpine2
+
+# 현재 image를 save.tgz 파일로 저장
+docker save busybox > ./git/save.tgz
+
+# 사용하지 않는 리소스 정리
+docker network prune
+docker volume prune
+
+# 현재 컨테이너 상의 /root/logs.txt 파일을 호스트의 . 경로에 복사
+docker cp ${CONTAINER_ID}:/root/logs.txt .
+
+# 저장된 도커 image를 docker 로 로드한다
+docker load < ./git/save.tgz
 
 # -t : 빌드 후 생성할 이미지 파일명
 # . : 참조할 디렉토리 위치 -> Dockerfile 필요
@@ -59,6 +82,7 @@ docker push $REPO_NAME:$TAG_NAME
 # stack : A stack is a group of interrelated services that share dependencies. and can be orchestrated and scaled together.
 # this command means 'single service stack' running on a 'single host'.
 docker stack deploy -c $COMPOSE_FILE_NAME $STACK_NAME
+docker-compose -f $COMPOSE_FILE_NAME
 
 # 배포된 docker stack 목록
 docker service ls

@@ -33,7 +33,7 @@ services:
     ports:
       - "6379:6379"
     volumes:
-      # "컨테이너내부파일:호스트 파일"
+      # "호스트파일:컨테이너파일"
       - "/data:/data"
     deploy:
       placement:
