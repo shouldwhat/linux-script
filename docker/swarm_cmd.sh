@@ -17,6 +17,10 @@ SWM_TOKEN=SWMTKN-1-54zarc1ockin7vvtf8ts2pbrpixqewpwadc4wnwszcgx194wxq-0nvaghvjjy
 ###################### Master
 #############################################################
 
+#
+# enable 2376/tcp, 2377/tcp, 7946/tcp, 7946/udp, 4789/udp
+#
+
 # Join 시 overlay network(name:ingreses) 가 Master 노드에 생성
 docker swarm init
 
