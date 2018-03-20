@@ -81,6 +81,7 @@ docker push $REPO_NAME:$TAG_NAME
 # docker stack 배포
 # stack : A stack is a group of interrelated services that share dependencies. and can be orchestrated and scaled together.
 # this command means 'single service stack' running on a 'single host'.
+# docker stack = service 그룹
 docker stack deploy -c $COMPOSE_FILE_NAME $STACK_NAME
 docker-compose -f $COMPOSE_FILE_NAME
 
