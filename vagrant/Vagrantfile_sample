@@ -1,0 +1,24 @@
+#
+# https://github.com/vagrant-libvirt/vagrant-libvirt
+# https://www.vagrantup.com/docs/vagrantfile/machine_settings.html
+# http://www.rubydoc.info/gems/vagrant-libvirt/0.0.28
+#
+
+Vagrant.configure("2") do |config|
+  config.vm.define("wkkim-vm2") do |vconfig|
+    vconfig.vm.box = "centos/7"
+    vconfig.vm.hostname = "wkkim-vagrant"
+    #vconfig.vm.network "private_network", :type => "dhcp"
+    #vconfig.vm.network "public_network", ip: "192.168.122.102"
+    #vconfig.vm.network "public_network", :dev => "virbr1", :mode => "bridge", :type => "bridge"
+    vconfig.vm.provider("libvirt") do |libvirt|
+      libvirt.default_prefix = "" # VM 이름 prefix
+      libvirt.cpus = "2"
+      libvirt.memory = "2048"
+      libvirt.storage_pool_name = "default" 		      # "default : /var/lib/libvirt/images", 이미지 저장 경로 변경하려면 새로운 storage_pool 생성할 것.
+      #libvirt.storage :file, :size => "20G", :path => "wkkim-vagrant-disk1.qcow2" # 추가 디스크.
+      libvirt.management_network_name = "default"             # 해당 항목 미설정 시 libvirt의 'vagrant-libvirt' 네트워크와 맵핑됨.
+      libvirt.management_network_address = "192.168.122.0/24" # management_network_name을 명시적으로 지정할 경우 해당 항목도 필수로 지정해야함.
+    end
+  end
+end
