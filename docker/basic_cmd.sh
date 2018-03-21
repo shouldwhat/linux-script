@@ -96,6 +96,9 @@ docker container ls
 # 배포된 docker stack 삭제
 docker stack rm $STACK_NAME
 
+# 배포된 container의 리소스 사용량 모니터링
+docker stats $CONTAINER_NAME1 $CONTAINER_NAME2
+
 # docker swarm 모드 활성화 & 현재 노드를 매니져로 지정
 docker swarm init
 

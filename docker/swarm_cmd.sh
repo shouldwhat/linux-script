@@ -18,7 +18,11 @@ SWM_TOKEN=SWMTKN-1-54zarc1ockin7vvtf8ts2pbrpixqewpwadc4wnwszcgx194wxq-0nvaghvjjy
 #############################################################
 
 #
-# enable 2376/tcp, 2377/tcp, 7946/tcp, 7946/udp, 4789/udp
+# enable ports
+# *. 2376/tcp,
+# *. 2377/tcp : Cluster Management
+# *. 7946/tcp,udp : Nodes communication
+# *. 4789/tcp,udp : Overlay network traffic 
 #
 
 # Join 시 overlay network(name:ingreses) 가 Master 노드에 생성

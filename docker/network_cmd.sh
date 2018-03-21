@@ -4,6 +4,9 @@ CONTAINER_ID=a9j2mj2fjgj345
 
 
 # --driver : 'bridge', 'host', 'overlay'
+# *. bridge : docker 호스트의 eth0와 연결된 docker0 브릿지 네트워크와 연결됨
+# *. host : docker 호스트 네트워크 그대로 사용(?)
+# *. overlay : docker 호스튼 노드간 통신 가능한 가상 네트워크를 생성함 
 
 # user-defined bridge network 생성(driver = bridge)
 # 디폴트로 brdige이며 '--driver brdige' 생략 가능
