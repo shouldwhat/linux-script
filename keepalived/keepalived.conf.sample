@@ -1,0 +1,10 @@
+vrrp_instance VI_1 {
+     interface eth0        # VIP를 맵핑할 네트워크 인터페이스
+     state BACKUP          # MASTER 또는 BACKUP
+     virtual_router_id 51  # 51 (Default.51)
+     priority 100          # MASTER, BACKUP 노드 간 우선순위 (Max.255)
+     virtual_ipaddress {
+          192.168.120.60   # 사용할 VIP
+     }
+}
+
