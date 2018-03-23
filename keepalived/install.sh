@@ -1,4 +1,7 @@
-#/bin/sh
+#
+# http://www.keepalived.org/
+# http://www.keepalived.org/doc/
+#
 
 KEEPALIVED=keepalived-1.4.2
 TAR_NAME=$KEEPALIVED.tar.gz

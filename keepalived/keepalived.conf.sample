@@ -1,10 +1,16 @@
 vrrp_instance VI_1 {
-     interface eth0        # VIP를 맵핑할 네트워크 인터페이스
-     state BACKUP          # MASTER 또는 BACKUP
-     virtual_router_id 51  # 51 (Default.51)
-     priority 100          # MASTER, BACKUP 노드 간 우선순위 (Max.255)
+     interface eth0                   # VIP를 맵핑할 네트워크 인터페이스
+     state BACKUP                     # MASTER 또는 BACKUP
+     virtual_router_id 51             # 51 (Default.51)
+     advert_int 1                     # MASTER 노드가 살아있음을 알리는VRRP 프로토콜 sending 인터벌
+     priority 100                     # MASTER, BACKUP 노드 간 우선순위 (Max.255)
+     unicast_src_ip 192.168.0.1       # 현재 서버의 eth0 네트워크의 아이피 (unicast 항목 미지정시, 현재 네트워크 대역에서 브로드캐스팅함.)
+     unicast_peer {                   # VRRP를 확인하는 peer 서버 아이피
+	  192.168.0.2
+	  192.168.0.3
+     }
      virtual_ipaddress {
-          192.168.120.60   # 사용할 VIP
+          192.168.120.60              # 사용할 VIP
      }
 }
 
