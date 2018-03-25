@@ -1,0 +1,51 @@
+global
+	stats timeout 30s
+	user haproxy
+	group haproxy
+	daemon
+
+defaults
+	log global
+	mode http
+	option dontlognull
+	timeout connect 5000
+	timeout client 500000
+	timeout server 500000
+
+listen stats                                 # stats 서비스는 haproxy서비스로 유입되는 요청에 대한 통계 데이터를 제공
+	bind *:9090                          # stats 서비스의 포트를 설정한다.
+	mode http
+	stats enable                         # stats 서비스를 enable한다.
+	stats hide-version
+	stats realm Loadbalanced\ Servers
+	stats uri /haproxy                   # status 서비스를 받기위한 uri를 설정한다.
+
+
+# ------------------------------------------ https
+frontend https_front
+	bind *:8443
+	mode tcp
+	default_backend https_back           # 프록시 서버로 유입된 요청을 스위칭할 backend를 지정한다.
+
+backend https_back
+	mode tcp
+	balance roundrobin                   # 스위칭 알고리즘 (roundrobin, leastconn, ...)
+	server server1 127.0.0.1:9000 check  # backend 서버 1
+	server server2 127.0.0.1:9001 check  # backend 서버 2
+	server server3 127.0.0.1:9002 check  # backend 서버 3
+	                                     # ...
+
+# ------------------------------------------ https
+#frontend http_front
+#	bind *:80
+#	default_backend http_back
+
+#backend http_back
+#	mode http
+#	option httplog
+#	balance roundrobin
+#	server server1 127.0.0.1:9000 check
+#	server server2 127.0.0.1:9001 check
+#	server server3 127.0.0.1:9002 check
+# ------------------------------------------
+
