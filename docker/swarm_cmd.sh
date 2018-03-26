@@ -14,7 +14,7 @@ MASTER_IP=192.168.120.51
 SWM_TOKEN=SWMTKN-1-54zarc1ockin7vvtf8ts2pbrpixqewpwadc4wnwszcgx194wxq-0nvaghvjjyidj1as8axkcfgky
 
 #############################################################
-###################### Master
+###################### Master (=Node Manager, Task Scheduler, Swarm Cluster Manager)
 #############################################################
 
 #
