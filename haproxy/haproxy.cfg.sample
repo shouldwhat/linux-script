@@ -2,7 +2,7 @@ global
 	stats timeout 30s
 	user haproxy
 	group haproxy
-	daemon
+#	daemon                               # daemon 설정 시 systemctl 로 실행 안됨.. 주석 처리할 것.
 
 defaults
 	log global
