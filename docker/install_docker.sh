@@ -15,3 +15,7 @@ yum install docker-ce -y
 
 # start service
 systemctl start docker
+
+
+# uninstall
+#yum remove docker docker-common docker-selinux docker-engine
