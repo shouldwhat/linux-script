@@ -1,0 +1,6 @@
+ES_ENDPOINT=192.168.120.52:80
+ES_CLUSTER_NAME=es
+
+ES_REQUEST_URL=$ES_ENDPOINT/$ES_CLUSTER_NAME
+
+curl -XPOST $ES_REQUEST_URL/_bulk?pretty --data-binary @simple_basketball.json
