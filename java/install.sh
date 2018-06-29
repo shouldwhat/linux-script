@@ -2,10 +2,9 @@
 #
 # This script install JDK.
 #
-
-DOWNLOAD_URL=http://download.oracle.com/otn-pub/java/jdk/8u161-b12/2f38c3b165be4555a1fa6e98c45e0808/jdk-8u161-linux-x64.tar.gz
-FILE_NAME=jdk1.8.0_161
-TAR_NAME=jdk-8u161-linux-x64.tar.gz
+DOWNLOAD_URL=http://download.oracle.com/otn-pub/java/jdk/8u171-b11/512cd62ec5174c3487ac17c61aaa89e8/jdk-8u171-linux-x64.tar.gz
+FILE_NAME=jdk1.8.0_171
+TAR_NAME=jdk-8u171-linux-x64.tar.gz
 
 #
 # [Step.1] Download JDK
