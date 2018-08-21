@@ -25,6 +25,7 @@ function build_redis_source {
 
 	make distclean
 	make
+	make install
 	make test
 }
 
