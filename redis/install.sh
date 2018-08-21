@@ -2,35 +2,64 @@
 # http://download.redis.io
 #
 
-REDIS=redis-4.0.9
+REDIS=redis-4.0.11
 REDIS_TAR=$REDIS.tar.gz
 DOWNLOAD_URL=http://download.redis.io/releases/$REDIS_TAR
+DEPEDENCY_PACKAGES=(tcl pidof wget)
 
-# [Step.0] Pre-Required
-yum install -y tcl pidof
+function install_dependencies {
+	for package in "${DEPEDENCY_PACKAGES[@]}"
+	do
+		#echo $package
+		yum install -y $package
+	done
+}
 
-# [Step.1] Download Redis
-wget $DOWNLOAD_URL
+function download_redis {
+	wget $DOWNLOAD_URL
+}
 
-# [Step.2] Build & Install
-tar -xvf $REDIS_TAR
-cd $REDIS
+function build_redis_source {
+	tar -xvf $REDIS_TAR
+	cd $REDIS
 
-make distclean
-make
-make test
+	make distclean
+	make
+	make test
+}
 
-# [Step.3] Configure
-cd utils
+function configure_redis {
+	cd utils
+	exec install_server.sh
+}
 
-exec install_server.sh
+function enable_redis_service {
+	chkconfig --add redis_6379
+	systemctl status redis_6379
+}
 
-# [Step.4] Enable systemctl
-chkconfig --add redis_6379
-systemctl status redis_6379
+function print_result {
+	echo -e
+	echo -e
+	echo "conf file : /etc/redis/redis_6379.conf"
+	echo -e
+	echo -e
+}
 
-echo -e
-echo -e
-echo "conf file : /etc/redis/redis_6379.conf"
-echo -e
-echo -e
+# [Step.1] Install Dependencies
+install_dependencies
+
+# [Step.2] Download
+#download_redis
+
+# [Step.3] Build
+#build_redis_source
+
+# [Step.4] Configure
+#configure_redis
+
+# [Step.5] Enable Service
+#enable_redis_service
+
+# [Step.6]
+#print_result
