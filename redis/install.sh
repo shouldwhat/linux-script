@@ -5,7 +5,7 @@
 REDIS=redis-4.0.11
 REDIS_TAR=$REDIS.tar.gz
 DOWNLOAD_URL=http://download.redis.io/releases/$REDIS_TAR
-DEPEDENCY_PACKAGES=(tcl pidof wget)
+DEPEDENCY_PACKAGES=(tcl pidof wget gcc)
 
 function install_dependencies {
 	for package in "${DEPEDENCY_PACKAGES[@]}"
