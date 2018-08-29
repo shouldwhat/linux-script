@@ -68,6 +68,13 @@ function set_ntp {
 	chronyc sources
 }
 
+function install_openstack_release_packages {
+	yum install centos-release-openstack-pike -y
+	yum upgrade -y
+	yum install python-openstackclient -y
+	yum install openstack-selinux -y
+}
+
 # setting ip
 
 # setting hosts
@@ -83,3 +90,5 @@ set_selinux
 
 # setting ntp
 set_ntp $NTP_HOSTNAME
+
+install_openstack_release_packages
