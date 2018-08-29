@@ -11,13 +11,18 @@ NTP_HOSTNAME=
 
 
 function set_hostname {
-	hostnamectl set-hostname $1
+	if [ "$1" = "" ]
+        then
+		hostnamectl set-hostname $HOSTNAME
+        else
+		hostnamectl set-hostname $1
+        fi
 }
 function set_ssh_passwordless {
 	
 	# INSTALL 'sshpass'
 	yum install -y sshpass
-	#ssh-keygen
+	ssh-keygen
 	
 	# IP
 	for os_host in "${OPENSTACK_HOST[@]}"
@@ -40,6 +45,10 @@ function set_ntp {
 	
 	# INSTALL 'chrony'
 	yum install -y chrony
+	if [ -e /etc/chrony.conf  ]
+	then
+		rm -rf /etc/chrony.conf
+	fi
 	touch /etc/chrony.conf
 
 	# CONFIGURE
@@ -64,13 +73,13 @@ function set_ntp {
 # setting hosts
 
 # setting hostname
-#set_hostname $HOSTNAME
+set_hostname $HOSTNAME
 
 # setting passwordless-ssh-auth
-#set_ssh_passwordless $ROOT_USER_PASSWORD $OPENSTACK_HOST
+set_ssh_passwordless $ROOT_USER_PASSWORD $OPENSTACK_HOST
 
 # setting selinux
-#set_selinux
+set_selinux
 
 # setting ntp
 set_ntp $NTP_HOSTNAME
