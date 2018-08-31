@@ -83,12 +83,12 @@ function install_openstack_release_packages {
 set_hostname $HOSTNAME
 
 # setting passwordless-ssh-auth
-set_ssh_passwordless $ROOT_USER_PASSWORD $OPENSTACK_HOST
+#set_ssh_passwordless $ROOT_USER_PASSWORD $OPENSTACK_HOST
 
 # setting selinux
-set_selinux
+#set_selinux
 
 # setting ntp
-set_ntp $NTP_HOSTNAME
+#set_ntp $NTP_HOSTNAME
 
-install_openstack_release_packages
+#install_openstack_release_packages
