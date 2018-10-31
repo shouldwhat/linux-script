@@ -1,5 +1,9 @@
 #!/bin/sh
 
+#
+# https://docs.docker.com/engine/reference/run/#general-form
+#
+
 IMAGE_NAME=friendlyhello
 CONTAINER_ID=37390bad58b9
 CONTAINER_NAME=alpine4
@@ -19,6 +23,9 @@ docker run -p 4000:80 $IMAGE_NAME
 # -d : 백그라운드 모드 실행
 docker run -d -p 4000:80 $IMAGE_NAME
 docker run -dit --name $CONTAINER_NAME $IMAGE_NAME $CMD
+
+# --add-host : 컨테이너의 hosts 파일 등록
+docker run -d -it --add-host="web.local:192.168.120.50" --name $CONTAINER_NAME $IMAGE_NAME
 
 # exec : container 내부에서 커멘드($CMD) 실행
 docker exec $IMAGE_NAME $CMD
