@@ -5,10 +5,10 @@ services:
     volumes:
      - .:/code
     ports:
-     - "${HIDDEN_TEMP_PORT}:5000"
+     - "${HIDDEN_TEMP_PORT}:5000"            # .env 파일 확인
     env_file:
-     - ./host-env
+     - ./host-env                            # host-env 에 정의한 환경 변수 임포트
     environment:
-     - MY_HOST_IP=192.168.120.52
+     - MY_HOST_IP=192.168.120.52             # 환경 변수 추가 임포트
   redis:
-    image: "${HIDDEN_REDIS_IMAGE_NAME}"
+    image: "${HIDDEN_REDIS_IMAGE_NAME}"      # .env 파일 확인
