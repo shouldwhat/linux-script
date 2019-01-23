@@ -25,8 +25,10 @@ services:
           memory: 1024M
 
       # lice-cycle 관리 정책 설정
+      # https://docs.docker.com/config/containers/start-containers-automatically/
       restart_policy:
         condition: on-failure   # 컨테이너 실패 시 즉시 다시 시작
+                                # always, unless-stopped, on-failure
     ports:
       - "8443:8443"
     networks:
