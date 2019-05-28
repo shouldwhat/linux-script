@@ -1,0 +1,14 @@
+# 
+# https://hub.docker.com/_/mariadb
+#
+# docker run --name some-mariadb \\
+#       -v /root/mariadb/chomw/volumes:/var/lib/mysql \\
+#       -p 3306:3306 \\
+#       -e MYSQL_ROOT_PASSWORD=gkdlvj\!12 \\
+#       -d mariadb:10.4.5-bionic \\
+#       --max_connections=2048 \\
+#       --open_files_limit=-1 \\
+#       --skip-name-resolve 
+# 
+
+
