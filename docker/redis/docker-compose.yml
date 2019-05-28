@@ -1,0 +1,9 @@
+version: '2'
+services:
+  some-redis:
+    image: yes
+    ports:
+      - "6379:6379"
+    volumes:
+      - "input-your-dir-path:/data"
+    ## options as below
