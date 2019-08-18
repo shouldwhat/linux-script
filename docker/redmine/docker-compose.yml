@@ -1,0 +1,24 @@
+#
+# THIS SCRIPT NOT WORKING... 
+# NEET TO DATABSE WAIT TO READY
+#
+version: '2'
+services: 
+  redmine-mysql:
+    image: mysql:5.7
+    environment:
+      - "MYSQL_USER=redmine"
+      - "MYSQL_PASSWORD=secret"
+      - "MYSQL_DATABASE=redmine"
+      - "MYSQL_RANDOM_ROOT_PASSWORD=1"
+    volumes:
+      - "/opt/redmine/mysql:/var/lib/mysql"
+  redmine:
+    image: redmine
+    volumes:
+      - "/opt/redmine/volume:/usr/src/redmine/files"
+    ports:
+      - "3000:3000"
+    links:
+      - "redmine-mysql"
+
