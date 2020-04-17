@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kuard
+spec:
+  containers:
+    - image: gcr.io/kuar-demo/kuard-amd64:1
+      name: kuard
+      livenessProbe:                // 활성 검사 정의
+        httpGet:
+          path: /healthy
+          port: 8080
+        initialDelaySeconds: 5		// 포드 생성후 5초 후 시작
+        timeoutSeconds: 1			// 1초 내 미응답 시, 실패로 간주
+        periodSeconds: 10			// 10초마다 한번씩
+        failureThreshold: 3			// 3번이상 연속 실패 시, 컨테이너 재시작
+      ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
