@@ -15,7 +15,7 @@
 # kubectl apply -f <설정파일>
 # kubectl delete -f <설정파일>
 
-* **kubectl 컨텍스트 설정**
+// kubectl 컨텍스트 설정
 # kubectl config get-contexts
 # kubectl config set-contexts $NEW_CONTEXT_NAME --user=kubernetes-admin --cluster=$CLUSTER_NAME --namespace=$NAMESPACE
 # kubectl config use-context $NEW_CONTEXT_NAME
