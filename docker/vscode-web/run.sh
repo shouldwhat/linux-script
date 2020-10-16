@@ -1,11 +1,16 @@
 #!/bin/sh
 
 #
-# https://github.com/cdr/code-server
+# https://github.com/cdr/code-server/blob/v3.6.0/doc/install.md#docker
 #
 
 SERVICE_PORT=8443
 
-docker run -it -p $SERVICE_PORT:8443 -v "${PWD}:/home/coder/project" codercom/code-server --allow-http --no-auth
-
-
+mkdir -p ~/.config
+docker run -it --name code-server -p $SERVICE_PORT:8080 \
+  -v "$HOME/.config:/home/coder/.config" \
+  -v "$PWD:/home/coder/project" \
+  -u "$(id -u):$(id -g)" \
+  -e "DOCKER_USER=$USER" \
+  codercom/code-server:latest \
+  --auth none
